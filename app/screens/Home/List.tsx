@@ -4,14 +4,24 @@ import {IMovie, ISearchResult} from '../../types/Movie.t';
 import {IMAGES, width} from '../../common';
 import {COLORS, SPACING} from '../../theme';
 import {HeadingApp, IconApp} from '../../components';
+import useThemeApp from '../../hooks/useThemeApp';
 type Iprops = {
   data: ISearchResult[];
   navigation: any;
 };
 
 const List = ({data, navigation}: Iprops) => {
+  let {theme} = useThemeApp();
+
   let Cart = ({item}: {item: ISearchResult}) => (
-    <View style={styles.cartBox}>
+    <View
+      style={[
+        styles.cartBox,
+        {
+          backgroundColor:
+            theme === 'dark' ? COLORS.darkBackground : COLORS.white,
+        },
+      ]}>
       <Pressable
         onPress={() =>
           navigation.navigate('Details', {
@@ -51,7 +61,11 @@ const List = ({data, navigation}: Iprops) => {
         </View>
         <View style={styles.sub_Row}>
           <HeadingApp size="sm">more</HeadingApp>
-          <IconApp name="arrow-right" type="Octicons" />
+          <IconApp
+            name="arrow-right"
+            type="Octicons"
+            color={theme == 'dark' ? COLORS.white : COLORS.background}
+          />
         </View>
       </View>
     </View>
@@ -88,7 +102,7 @@ const styles = StyleSheet.create({
     width: width - SPACING.md,
     padding: SPACING.sm,
     borderRadius: SPACING.md,
-    backgroundColor: COLORS.white,
+
     alignItems: 'flex-start',
     gap: 24,
   },

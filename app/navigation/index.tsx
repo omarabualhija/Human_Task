@@ -11,7 +11,7 @@ import SplashScreen from '../screens/SplashScreen';
 import {useColorScheme} from 'react-native';
 import HomeScreen from '../screens/Home';
 import DetailsScreen from '../screens/Details';
-
+import useThemeApp from '../hooks/useThemeApp';
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 const lightTheme = {
@@ -23,10 +23,9 @@ const lightTheme = {
 };
 
 function RootStack() {
-  let theme = useColorScheme();
-
+  let {theme} = useThemeApp();
   return (
-    <NavigationContainer theme={theme === 'light' ? lightTheme : DarkTheme}>
+    <NavigationContainer theme={theme == 'light' ? lightTheme : DarkTheme}>
       <Stack.Navigator
         initialRouteName="Splash"
         screenOptions={{

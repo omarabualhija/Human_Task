@@ -10,7 +10,7 @@ import React from 'react';
 import {COLORS, TYPOGRAPHY} from '../theme';
 import {translate} from '../I18n';
 import {isRTL} from '../common';
-
+import useThemeApp from '../hooks/useThemeApp';
 interface Iprops extends TextProps {
   children: React.ReactNode;
   size: keyof typeof $sizeStyles;
@@ -18,8 +18,12 @@ interface Iprops extends TextProps {
 }
 
 const HeadingApp = ({children, size, style}: Iprops) => {
+  let {theme} = useThemeApp();
+
   const $rtlStyle: TextStyle = isRTL ? {writingDirection: 'rtl'} : {};
-  const $defultStyle: TextStyle = {color: COLORS.text};
+  const $defultStyle: TextStyle = {
+    color: theme == 'dark' ? COLORS.white : COLORS.text,
+  };
   const $styles = [$rtlStyle, $sizeStyles[size], $defultStyle, style];
   return <Text style={$styles}>{translate(String(children))}</Text>;
 };

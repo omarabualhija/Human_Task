@@ -12,6 +12,7 @@ import HeadingApp from './HeadingApp';
 import IconApp from './IconApp';
 import {COLORS, SPACING, hitSlop} from '../theme';
 import {width} from '../common';
+import useThemeApp from '../hooks/useThemeApp';
 interface Iprops extends TextInputProps {
   style?: StyleProp<TextInputProps>;
   containerStyle?: any;
@@ -40,7 +41,7 @@ const InputApp = forwardRef(function InputApp(
   let [isSecure, setisSecure] = useState<boolean>(
     props.password ? true : false,
   );
-
+  let {theme} = useThemeApp();
   return (
     <View style={[styles.container]}>
       <View
@@ -63,7 +64,8 @@ const InputApp = forwardRef(function InputApp(
             justifyContent: 'space-between',
             alignItems: 'center',
             height: 48,
-            backgroundColor: COLORS.white,
+            backgroundColor:
+              theme == 'light' ? COLORS.white : COLORS.darkBackground,
             borderRadius: SPACING.md,
             paddingHorizontal: SPACING.md,
           },
@@ -71,13 +73,17 @@ const InputApp = forwardRef(function InputApp(
           props.containerStyle,
         ]}>
         <TextInput
-          placeholderTextColor={COLORS.text}
+          placeholderTextColor={theme == 'dark' ? COLORS.white : COLORS.text}
           {...props}
           ref={ref}
           secureTextEntry={isSecure}
           value={props.value}
           numberOfLines={props.numberOfLines ?? 1}
-          style={[styles.input, props.style]}
+          style={[
+            styles.input,
+            {color: theme === 'dark' ? COLORS.white : COLORS.text},
+            props.style,
+          ]}
           editable={editableTxt}
         />
         {props.icon && props.icon}

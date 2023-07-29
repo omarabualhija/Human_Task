@@ -44,5 +44,7 @@ export const COLORS = {
 
   backgrouund: palette.neutral200,
 
+  darkBackground: '#545458',
+
   white: palette.neutral100,
 };

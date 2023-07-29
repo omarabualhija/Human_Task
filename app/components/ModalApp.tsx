@@ -4,7 +4,7 @@ import Modal from 'react-native-modal';
 import {useSafeAreaInsets} from 'react-native-safe-area-context'; //see https://reactnavigation.org/docs/handling-safe-area/#use-the-hook-for-more-control
 import {width, height as _height} from '../common';
 import {COLORS, SPACING} from '../theme';
-
+import useThemeApp from '../hooks/useThemeApp';
 const ModalApp = ({
   isVisible,
   children,
@@ -25,6 +25,7 @@ const ModalApp = ({
   position?: 'bottom' | 'center';
 }) => {
   const insets = useSafeAreaInsets();
+  let {theme} = useThemeApp();
 
   return (
     <Modal
@@ -58,7 +59,8 @@ const ModalApp = ({
             height: height - insets.top,
             borderTopStartRadius: SPACING.md,
             borderTopEndRadius: SPACING.md,
-            backgroundColor: COLORS.white,
+            backgroundColor:
+              theme === 'dark' ? COLORS.darkBackground : COLORS.white,
           }}>
           <View
             style={{
@@ -78,7 +80,8 @@ const ModalApp = ({
             width: width - SPACING.md,
             height: height,
             position: 'absolute',
-            backgroundColor: COLORS.white,
+            backgroundColor:
+              theme === 'dark' ? COLORS.darkBackground : COLORS.white,
             borderRadius: SPACING.md,
             alignSelf: 'center',
           }}>

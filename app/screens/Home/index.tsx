@@ -17,6 +17,8 @@ import Filter from './Filter';
 import Toast, {ItoastRef} from '../../components/toast';
 import {ErrorApp, LoadingApp} from '../../components';
 import {RootStackScreenProps} from '../../navigation/types';
+import {ScrollView} from 'react-native-gesture-handler';
+import Theme from './Theme';
 let page = 1;
 
 interface HomeProps extends RootStackScreenProps<'Home'> {}
@@ -39,16 +41,21 @@ const HomeScreen: FC<HomeProps> = ({navigation}) => {
     handleGetSearch({s: txt, page, ...filterValue});
   };
   return (
-    <SafeAreaView style={{flex: 1, gap: 12}}>
-      <SearchBox onSubmit={handleSearch} />
-      <Filter onSelect={(filter: IFilterValue) => setFilterValue(filter)} />
-      <List data={movies?.Search ?? []} navigation={navigation} />
-      <IdeaSearch isIdle={isIdle} />
-      <LoadingApp loading={loadingMovies} />
-      <Nothing
-        visible={!isIdle && !loadingMovies && !!!movies?.Search?.length}
-      />
-      <ErrorApp error={isError} />
+    <SafeAreaView style={{flex: 1, paddingTop: 12}}>
+      <ScrollView
+        style={{flexGrow: 1}}
+        contentContainerStyle={{flexGrow: 1, gap: 12}}>
+        <Theme />
+        <SearchBox onSubmit={handleSearch} />
+        <Filter onSelect={(filter: IFilterValue) => setFilterValue(filter)} />
+        <List data={movies?.Search ?? []} navigation={navigation} />
+        <IdeaSearch isIdle={isIdle} />
+        <LoadingApp loading={loadingMovies} />
+        <Nothing
+          visible={!isIdle && !loadingMovies && !!!movies?.Search?.length}
+        />
+        <ErrorApp error={isError} />
+      </ScrollView>
       <Toast ref={toastRef} />
     </SafeAreaView>
   );

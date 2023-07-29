@@ -3,7 +3,7 @@ import React, {useEffect, useState} from 'react';
 import {HeadingApp, IconApp} from '../../components';
 import {COLORS} from '../../theme';
 import YearModal from '../../components/YearModal';
-
+import useThemeApp from '../../hooks/useThemeApp';
 type Iprops = {
   onSelect: (value: IFilterValue) => void;
 };
@@ -16,7 +16,7 @@ const Filter = ({onSelect}: Iprops) => {
   let [y, setY] = useState<string | undefined>();
   let [type, setType] = useState<ItypeMovie>();
   let [yearModal, setYearModal] = useState<boolean>(false);
-
+  let {theme} = useThemeApp();
   useEffect(() => {
     onSelect({type, y});
   }, [type, y]);
@@ -30,10 +30,26 @@ const Filter = ({onSelect}: Iprops) => {
         borderColor: txt == type ? COLORS.white : COLORS.border,
         flexDirection: 'row',
         alignItems: 'center',
-        backgroundColor: txt == type ? COLORS.tint : COLORS.background,
+        backgroundColor:
+          theme === 'dark'
+            ? txt == type
+              ? COLORS.tint
+              : COLORS.darkBackground
+            : txt == type
+            ? COLORS.tint
+            : COLORS.background,
       }}>
       <HeadingApp
-        style={{color: txt == type ? COLORS.white : COLORS.text}}
+        style={{
+          color:
+            theme === 'dark'
+              ? txt == type
+                ? COLORS.white
+                : COLORS.white
+              : txt == type
+              ? COLORS.white
+              : COLORS.text,
+        }}
         size="xs">
         {txt}
       </HeadingApp>
