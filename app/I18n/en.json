@@ -1,0 +1,19 @@
+{
+  "translation": {
+    "prefex": "en",
+    "welcomeMSG": "Welcome there,this is omar abu alhija",
+    "discreptApp": "This app supports both Arabic and English languages, depending on the language of your phone. You can select the preferred language from profile screen",
+    "searchhere": "Search here,Like:Top Gun",
+    "nothinghere": "Sorry nothing here",
+    "startSearch": "Start searching to see more information about your movie",
+    "mustBe3Character": "Your search must be more than 3 characters long",
+    "releaseyear": "Release year",
+    "more": "More",
+    "somthingWrong": "Sorry,Something went wrong please try again",
+    "Title": "Title : ",
+    "plotsummary": "plot summary : ",
+    "rating": "Rating : ",
+    "runtime": "Runtime : ",
+    "Genre": "Genre : "
+  }
+}
