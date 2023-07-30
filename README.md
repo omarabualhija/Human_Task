@@ -29,3 +29,6 @@ Notes you might need to know:
 ![Screenshot_1690699362](https://github.com/omarabualhija/Human_Task/assets/71391078/60aac72b-198e-4297-b9
 ![Screenshot_1690699378](https://github.com/omarabualhija/Human_Task/assets/71391078/56d395e6-78b3-4b71-886a-8f3a958bec5b)
 45-b828d86f5140)
+![Screenshot_1690700010](https://github.com/omarabualhija/Human_Task/assets/71391078/1353a66f-2c37-4966-8374-dbdf170ccd0e)
+![Screenshot_1690699398](https://github.com/omarabualhija/Human_Task/assets/71391078/93540cb4-0b08-4626-b516-2d8244db3376)
+![Screenshot_1690700008](https://github.com/omarabualhija/Human_Task/assets/71391078/4c95cd44-c1ea-4991-935e-03cb4fc8487a)
